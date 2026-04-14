@@ -57,7 +57,7 @@ No hallucination loops. No fragile one-shot prompts. Each step is tested, docume
 
 Interested in a custom automation for your business?
 
-📧 [your-email@example.com]  
+📧 [kshawng12@gmail.com]  
 🔗 [Your LinkedIn / Website]
 
 ---
