@@ -24,19 +24,17 @@ No reformatting. No manually scanning for timestamps. No rewriting the same conv
 
 ## Sample Output
 
-**Source:** Interview with Abel Grunfeld, Head of Marketing at Riverside  
-**Episode:** "How AI Is Changing Podcasting — What Every Creator Needs to Know"  
-**Show:** The Creator Edge Podcast
+**Source:** [This Past Weekend w/ Theo Von #652](https://www.youtube.com/watch?v=ljerfYGfCeE) — real YouTube episode  
+**Guest:** Matt McCusker  
+**Full sample:** [View complete show notes](sample_theo_von_ep652.md)
 
 ---
 
 **Episode Summary generated:**
 
-> In this episode, you'll get a front-row seat to how AI is reshaping every stage of the podcasting and video creation process — from pre-production all the way through to publishing. Abel Grunfeld, Head of Marketing at Riverside, breaks down exactly where AI is creating the biggest impact and how creators at every level can take advantage of it right now.
+> In this episode, Theo Von sits down with stand-up comedian and co-host of the Matt and Shane's Secret Podcast, Matt McCusker, for a wide-ranging, hilarious conversation that feels like hanging out with two old friends. From the chaos of carrying too much stuff in your pockets to the surprisingly brutal world of backyard gardening, Theo and Matt find comedy in the everyday absurdities of life.
 >
-> You'll learn how AI is helping interviewers ask smarter, more original questions; how visual tools like Midjourney are eliminating weeks of pre-production guesswork; and how automated editing tools are slashing post-production time from hours down to minutes. Abel also tackles the big fear head-on — no, AI is not replacing human creators — and explains why emotional resonance and authentic storytelling will always require a human touch.
->
-> Whether you're a seasoned podcaster looking to scale your workflow or a brand-new creator who's been holding back because of the technical learning curve, this episode gives you a clear, honest picture of where AI fits into your creative process.
+> You'll hear Matt break down his ongoing war against cotton rats destroying his backyard garden — complete with fiberglass rat poison, 4 lbs of red pepper flakes, and a very matter-of-fact exterminator who's seen it all. Along the way, the guys riff on the philosophy of gardening (Matt runs a ruthless, totalitarian garden — no babying allowed), the short shelf life of professional exterminators, and the unspoken social dynamics of adult group settings.
 
 ---
 
@@ -44,29 +42,30 @@ No reformatting. No manually scanning for timestamps. No rewriting the same conv
 
 | Timestamp | Topic |
 |---|---|
-| 0:00 | Introducing Abel Grunfeld from Riverside |
-| 2:15 | AI is revolutionizing pre-production prep |
-| 6:30 | Midjourney and visual concept testing |
-| 11:00 | Magic Clips: turning hours of editing into minutes |
-| 17:20 | Will AI make human creators obsolete? |
-| 22:45 | AI is leveling the playing field for new creators |
-| 26:10 | Top tools and the skill that compounds fastest |
+| 0:00 | Spring sale and intro to Matt McCusker |
+| 1:30 | Men and their pockets — the purse debate |
+| 2:45 | Matt's upcoming tour dates |
+| 5:17 | Matt's backyard gardening obsession |
+| 7:05 | The rat problem and extreme pest control |
+| 10:00 | Spider allies and garden ecosystem |
+| 11:40 | Extreme exterminators and bug bombs |
+| 13:40 | Group activities and adult know-it-alls |
 
 ---
 
 **Key takeaways generated:**
 
-- Use AI before the interview starts — researching your guest's perspective with AI tools leads to more original, high-quality questions that set your episode apart.
-- Test your visual concepts with tools like Midjourney before production begins to align your team and eliminate costly creative guesswork.
-- Automate your post-production with Riverside's Magic Clips to turn a 10-hour editing job into a task that takes minutes.
-- Don't fear AI replacing you — focus on the emotional and narrative elements only you can deliver, and let AI handle the technical heavy lifting.
-- Invest time in learning how to prompt AI effectively; it's a compounding skill that will make every other part of your workflow faster and better.
+- If you're going to garden, commit fully — half-measures like dumping cayenne pepper won't stop determined pests; call a professional exterminator with the real stuff.
+- Running a "totalitarian garden" — letting weak plants die instead of babying them — is Matt's philosophy for getting actual producers in the ground.
+- Tour tickets in your city won't sell themselves — if a comedian you love is coming to your town, go buy the ticket.
+- Any group of adults will have at least one unbearable know-it-all, so choose your gardening clubs wisely.
+- Men need a better carry solution — the fanny pack debate is unresolved, but something has to give.
 
 ---
 
 **Short platform description generated:**
 
-> AI is rewriting the rules of podcasting — and it's happening fast. Abel Grunfeld from Riverside breaks down how smart creators are using AI to prep better, edit faster, and reach more people. Don't get left behind.
+> Comedian Matt McCusker stops by to talk tour life, backyard gardening gone wrong, and an all-out war against cotton rats. Chaos, laughs, and fiberglass rat poison. Don't miss it.
 
 ---
 
