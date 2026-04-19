@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome Aboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&family=Syne:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:      #0B0B0E;
+      --text:    #F0EBE1;
+      --muted:   #5A5A6A;
+      --accent:  #7EE8A2;
+      --border:  #252530;
+      --font-d:  'Fraunces', Georgia, serif;
+      --font-ui: 'Syne', system-ui, sans-serif;
+    }
+
+    html, body {
+      height: 100%;
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-ui);
+      overflow: hidden;
+    }
+
+    /* Subtle noise texture */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.025;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+
+    /* Progress line */
+    #progress-track {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 2px;
+      background: var(--border);
+      z-index: 100;
+    }
+    #progress-fill {
+      height: 100%;
+      background: var(--accent);
+      transition: width 0.55s cubic-bezier(0.4, 0, 0.2, 1);
+      width: 0%;
+    }
+
+    /* Step counter */
+    #counter {
+      position: fixed;
+      top: 2.25rem; right: 3rem;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      color: var(--muted);
+      z-index: 100;
+      transition: opacity 0.3s;
+    }
+
+    /* Centered layout */
+    .stage {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      padding: 2rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Each question page */
+    .page {
+      position: absolute;
+      width: 100%;
+      max-width: 540px;
+      opacity: 0;
+      transform: translateY(28px);
+      pointer-events: none;
+      transition: opacity 0.38s ease, transform 0.38s ease;
+    }
+    .page.active {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: all;
+    }
+    .page.exit {
+      opacity: 0;
+      transform: translateY(-28px);
+      pointer-events: none;
+      transition: opacity 0.28s ease, transform 0.28s ease;
+    }
+
+    /* Eyebrow label */
+    .eyebrow {
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.1rem;
+    }
+
+    /* Question heading */
+    .question {
+      font-family: var(--font-d);
+      font-style: italic;
+      font-weight: 300;
+      font-size: clamp(1.8rem, 4.5vw, 2.6rem);
+      line-height: 1.2;
+      color: var(--text);
+      margin-bottom: 2.5rem;
+    }
+
+    /* Input field */
+    .field {
+      margin-bottom: 2.5rem;
+      position: relative;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      background: transparent;
+      border: none;
+      border-bottom: 1.5px solid var(--border);
+      color: var(--text);
+      font-family: var(--font-ui);
+      font-size: 1.1rem;
+      font-weight: 400;
+      padding: 0.75rem 0;
+      outline: none;
+      transition: border-color 0.25s ease;
+      -webkit-appearance: none;
+      appearance: none;
+    }
+    input::placeholder, textarea::placeholder { color: var(--muted); }
+    input:focus, select:focus, textarea:focus { border-color: var(--accent); }
+
+    select { cursor: pointer; color: var(--muted); }
+    select.filled { color: var(--text); }
+    select option { background: #1C1C24; color: var(--text); }
+
+    textarea { resize: none; height: 96px; line-height: 1.65; }
+
+    /* Animated underline on focus */
+    .field::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0;
+      height: 1.5px;
+      width: 0%;
+      background: var(--accent);
+      transition: width 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .field:focus-within::after { width: 100%; }
+
+    /* Actions row */
+    .actions {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .btn {
+      background: var(--text);
+      color: var(--bg);
+      border: none;
+      padding: 0.85rem 1.9rem;
+      font-family: var(--font-ui);
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+      clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 0 100%);
+    }
+    .btn:hover { background: var(--accent); transform: translateY(-1px); }
+    .btn:active { transform: translateY(0); }
+
+    .hint {
+      font-size: 0.72rem;
+      color: var(--muted);
+      letter-spacing: 0.04em;
+    }
+
+    /* ─── Thank-you screen ─── */
+    #thank-you { text-align: center; }
+
+    .check-wrap {
+      width: 64px; height: 64px;
+      margin: 0 auto 1.75rem;
+    }
+
+    .check-circle {
+      fill: none;
+      stroke: var(--accent);
+      stroke-width: 2;
+      stroke-dasharray: 157;
+      stroke-dashoffset: 157;
+      animation: draw-circle 0.55s ease-out forwards;
+    }
+    .check-tick {
+      fill: none;
+      stroke: var(--accent);
+      stroke-width: 2.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-dasharray: 46;
+      stroke-dashoffset: 46;
+      animation: draw-tick 0.35s 0.5s ease-out forwards;
+    }
+
+    @keyframes draw-circle { to { stroke-dashoffset: 0; } }
+    @keyframes draw-tick   { to { stroke-dashoffset: 0; } }
+
+    .ty-name-line {
+      font-family: var(--font-d);
+      font-style: italic;
+      font-weight: 300;
+      font-size: clamp(2rem, 5vw, 2.75rem);
+      line-height: 1.2;
+      margin-bottom: 0.85rem;
+    }
+    .ty-accent { color: var(--accent); font-style: normal; }
+
+    .ty-sub {
+      font-size: 0.88rem;
+      color: var(--muted);
+      line-height: 1.7;
+      max-width: 360px;
+      margin: 0 auto;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="progress-track"><div id="progress-fill"></div></div>
+  <div id="counter">01 / 08</div>
+
+  <div class="stage">
+
+    <!-- 01 First name -->
+    <div class="page active" data-index="0">
+      <p class="eyebrow">Let's get started</p>
+      <h2 class="question">What's your<br>first name?</h2>
+      <div class="field">
+        <input type="text" id="q0" placeholder="First name" autocomplete="given-name" autofocus>
+      </div>
+      <div class="actions">
+        <button class="btn" onclick="advance()">Continue →</button>
+        <span class="hint">or press Enter ↵</span>
+      </div>
+    </div>
+
+    <!-- 02 Last name -->
+    <div class="page" data-index="1">
+      <p class="eyebrow">Nice to meet you</p>
+      <h2 class="question" id="q1-label">And your<br>last name?</h2>
+      <div class="field">
+        <input type="text" id="q1" placeholder="Last name" autocomplete="family-name">
+      </div>
+      <div class="actions">
+        <button class="btn" onclick="advance()">Continue →</button>
+        <span class="hint">or press Enter ↵</span>
+      </div>
+    </div>
+
+    <!-- 03 Phone -->
+    <div class="page" data-index="2">
+      <p class="eyebrow">Stay connected</p>
+      <h2 class="question">Best phone<br>number?</h2>
+      <div class="field">
+        <input type="tel" id="q2" placeholder="+1 (555) 000-0000" autocomplete="tel">
+      </div>
+      <div class="actions">
+        <button class="btn" onclick="advance()">Continue →</button>
+        <span class="hint">or press Enter ↵</span>
+      </div>
+    </div>
+
+    <!-- 04 Business -->
+    <div class="page" data-index="3">
+      <p class="eyebrow">Your business</p>
+      <h2 class="question">What's your<br>business called?</h2>
+      <div class="field">
+        <input type="text" id="q3" placeholder="Business name" autocomplete="organization">
+      </div>
+      <div class="actions">
+        <button class="btn" onclick="advance()">Continue →</button>
+        <span class="hint">or press Enter ↵</span>
+      </div>
+    </div>
+
+    <!-- 05 Email -->
+    <div class="page" data-index="4">
+      <p class="eyebrow">Keep in touch</p>
+      <h2 class="question">Your email<br>address?</h2>
+      <div class="field">
+        <input type="email" id="q4" placeholder="you@example.com" autocomplete="email">
+      </div>
+      <div class="actions">
+        <button class="btn" onclick="advance()">Continue →</button>
+        <span class="hint">or press Enter ↵</span>
+      </div>
+    </div>
+
+    <!-- 06 Industry -->
+    <div class="page" data-index="5">
+      <p class="eyebrow">Your world</p>
+      <h2 class="question">What industry<br>are you in?</h2>
+      <div class="field">
+        <input type="text" id="q5" placeholder="e.g. Marketing, Tech, Retail…">
+      </div>
+      <div class="actions">
+        <button class="btn" onclick="advance()">Continue →</button>
+        <span class="hint">or press Enter ↵</span>
+      </div>
+    </div>
+
+    <!-- 07 Referral -->
+    <div class="page" data-index="6">
+      <p class="eyebrow">How'd you find us</p>
+      <h2 class="question">How did you hear<br>about us?</h2>
+      <div class="field">
+        <select id="q6" onchange="this.classList.add('filled')">
+          <option value="" disabled selected>Select one…</option>
+          <option value="Google">Google</option>
+          <option value="Social Media">Social Media</option>
+          <option value="A Friend">A Friend</option>
+          <option value="An Event">An Event</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+      <div class="actions">
+        <button class="btn" onclick="advance()">Continue →</button>
+        <span class="hint">or press Enter ↵</span>
+      </div>
+    </div>
+
+    <!-- 08 Challenge -->
+    <div class="page" data-index="7">
+      <p class="eyebrow">Almost there</p>
+      <h2 class="question">What's your biggest<br>challenge right now?</h2>
+      <div class="field">
+        <textarea id="q7" placeholder="Tell us what's on your mind…"></textarea>
+      </div>
+      <div class="actions">
+        <button class="btn" onclick="advance()">Submit →</button>
+        <span class="hint">or press Enter ↵</span>
+      </div>
+    </div>
+
+    <!-- Thank you -->
+    <div class="page" id="thank-you" data-index="8">
+      <div class="check-wrap">
+        <svg viewBox="0 0 52 52" xmlns="http://www.w3.org/2000/svg">
+          <circle class="check-circle" cx="26" cy="26" r="25"/>
+          <path class="check-tick" d="M14 27l8 8 16-16"/>
+        </svg>
+      </div>
+      <p class="ty-name-line">You're all set,<br><span class="ty-accent" id="ty-name">friend</span>.</p>
+      <p class="ty-sub" id="ty-sub">Welcome aboard. We'll be in touch soon.</p>
+    </div>
+
+  </div>
+
+  <script>
+    const TOTAL = 8;
+    const keys  = ['firstName','lastName','phone','business','email','industry','referral','challenge'];
+    const answers = {};
+    let current = 0;
+
+    const pages   = document.querySelectorAll('.page');
+    const fill    = document.getElementById('progress-fill');
+    const counter = document.getElementById('counter');
+
+    function updateHUD() {
+      fill.style.width = (current / TOTAL * 100) + '%';
+      counter.textContent = current < TOTAL
+        ? String(current + 1).padStart(2,'0') + ' / ' + String(TOTAL).padStart(2,'0')
+        : '';
+    }
+
+    function advance() {
+      if (current >= TOTAL) return;
+
+      // Save current answer
+      const el = document.getElementById('q' + current);
+      if (el) answers[keys[current]] = el.value.trim();
+
+      // Swap pages
+      const leaving = pages[current];
+      leaving.classList.remove('active');
+      leaving.classList.add('exit');
+      setTimeout(() => leaving.classList.remove('exit'), 350);
+
+      current++;
+      updateHUD();
+
+      setTimeout(() => {
+        const arriving = pages[current];
+        arriving.classList.add('active');
+
+        if (current === TOTAL) {
+          // Populate thank-you
+          document.getElementById('ty-name').textContent = answers.firstName || 'friend';
+          if (answers.business) {
+            document.getElementById('ty-sub').textContent =
+              `Welcome, ${answers.business}. We'll be in touch soon.`;
+          }
+        } else {
+          const next = document.getElementById('q' + current);
+          if (next) next.focus();
+
+          // Personalise Q2 label with first name
+          if (current === 1 && answers.firstName) {
+            document.getElementById('q1-label').innerHTML =
+              `And your<br>last name, <em style="color:var(--accent)">${answers.firstName}</em>?`;
+          }
+        }
+      }, 60);
+    }
+
+    // Enter key → advance (Shift+Enter in textarea = newline, plain Enter = advance)
+    document.addEventListener('keydown', e => {
+      if (e.key !== 'Enter') return;
+      const el = document.getElementById('q' + current);
+      if (el && el.tagName === 'TEXTAREA' && e.shiftKey) return;
+      if (el && el.tagName === 'TEXTAREA') e.preventDefault();
+      advance();
+    });
+
+    updateHUD();
+  </script>
+</body>
+</html>
