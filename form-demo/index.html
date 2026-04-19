@@ -413,8 +413,9 @@
           // Populate thank-you
           document.getElementById('ty-name').textContent = answers.firstName || 'friend';
           if (answers.business) {
+            const biz = answers.business.replace(/\.+$/, '');
             document.getElementById('ty-sub').textContent =
-              `Welcome, ${answers.business}. We'll be in touch soon.`;
+              `Welcome, ${biz}. We'll be in touch soon.`;
           }
         } else {
           const next = document.getElementById('q' + current);
