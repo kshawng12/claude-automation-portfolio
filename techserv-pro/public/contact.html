@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact — TechServ Pro</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+  <!-- Nav -->
+  <nav class="nav">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__logo">TechServ<span>Pro</span></a>
+      <button class="nav__toggle" aria-label="Toggle menu" id="navToggle">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav__links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#services">Services</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li class="nav__cta"><a href="book.html" class="btn btn--primary">Book Appointment</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Page header -->
+  <div class="page-header">
+    <div class="page-header__inner fade-up">
+      <span class="page-header__eyebrow">Reach out</span>
+      <h1>Get in Touch</h1>
+      <p>Have a question before booking? Send us a message and we'll get back to you within one business day.</p>
+    </div>
+  </div>
+
+  <!-- Form -->
+  <section class="form-section">
+    <div class="form-wrap">
+      <form id="contactForm" novalidate>
+        <div class="form-grid">
+
+          <div class="form-group full">
+            <label for="name">Full Name <span class="required">*</span></label>
+            <input type="text" id="name" name="name" placeholder="Jane Smith" autocomplete="name" />
+            <span class="field-error" id="nameError">Please enter your name.</span>
+          </div>
+
+          <div class="form-group full">
+            <label for="email">Email Address <span class="required">*</span></label>
+            <input type="email" id="email" name="email" placeholder="jane@example.com" autocomplete="email" />
+            <span class="field-error" id="emailError">Please enter a valid email.</span>
+          </div>
+
+          <div class="form-group full">
+            <label for="message">Message <span class="required">*</span></label>
+            <textarea id="message" name="message" placeholder="Tell us what you need help with…" style="min-height: 160px;"></textarea>
+            <span class="field-error" id="messageError">Please enter a message.</span>
+          </div>
+
+        </div>
+
+        <p class="form-note mt-16"><span class="required">*</span> Required fields. We respond within one business day.</p>
+
+        <div class="form-submit mt-24">
+          <button type="submit" class="btn btn--primary btn--large btn--full" id="submitBtn">
+            Send Message
+          </button>
+        </div>
+
+        <div class="form-message" id="formMessage"></div>
+      </form>
+
+      <div class="mt-32" style="padding-top: 32px; border-top: 1px solid var(--gray-border);">
+        <p style="font-size: 15px; color: var(--text-mid);">
+          Ready to book? <a href="book.html" style="color: var(--purple); font-weight: 500;">Schedule an appointment directly →</a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div>
+          <div class="footer__brand-name">TechServ<span>Pro</span></div>
+          <p class="footer__tagline">Professional IT support and consulting for individuals and small businesses.</p>
+        </div>
+        <div>
+          <div class="footer__col-title">Services</div>
+          <ul class="footer__links">
+            <li><a href="book.html">Remote IT Support</a></li>
+            <li><a href="book.html">Network Setup</a></li>
+            <li><a href="book.html">Security Audit</a></li>
+            <li><a href="book.html">Computer Repair</a></li>
+            <li><a href="book.html">IT Consulting</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Company</div>
+          <ul class="footer__links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html#services">Services</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Hours</div>
+          <ul class="footer__links">
+            <li>Mon–Fri</li>
+            <li>9:00 AM – 5:00 PM ET</li>
+            <li><a href="book.html">Book online</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span>© 2026 TechServ Pro. All rights reserved.</span>
+        <span>Built as a portfolio project.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

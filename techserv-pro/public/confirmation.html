@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Confirmed — TechServ Pro</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+  <!-- Nav -->
+  <nav class="nav">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__logo">TechServ<span>Pro</span></a>
+      <button class="nav__toggle" aria-label="Toggle menu" id="navToggle">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav__links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#services">Services</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li class="nav__cta"><a href="book.html" class="btn btn--primary">Book Appointment</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Confirmation -->
+  <div class="confirmation">
+    <div class="confirmation__box fade-up">
+      <div class="confirmation__icon">✅</div>
+      <h1>You're all set!</h1>
+      <p id="confirmMsg">Your request has been received. We'll review the details and confirm your appointment within one business day. Check your inbox for a follow-up.</p>
+      <div class="confirmation__actions">
+        <a href="index.html" class="btn btn--outline">Back to Home</a>
+        <a href="book.html" class="btn btn--primary">Book Another</a>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('type') === 'contact') {
+      document.getElementById('confirmMsg').textContent =
+        'Your message has been received. We\'ll get back to you within one business day.';
+    }
+  </script>
+</body>
+</html>

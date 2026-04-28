@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Book an Appointment — TechServ Pro</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+  <!-- Nav -->
+  <nav class="nav">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__logo">TechServ<span>Pro</span></a>
+      <button class="nav__toggle" aria-label="Toggle menu" id="navToggle">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav__links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#services">Services</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li class="nav__cta"><a href="book.html" class="btn btn--primary">Book Appointment</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Page header -->
+  <div class="page-header">
+    <div class="page-header__inner fade-up">
+      <span class="page-header__eyebrow">Get started</span>
+      <h1>Book an Appointment</h1>
+      <p>Choose your service and a preferred time. We'll confirm your booking within one business day.</p>
+    </div>
+  </div>
+
+  <!-- Form -->
+  <section class="form-section">
+    <div class="form-wrap">
+      <form id="bookingForm" novalidate>
+        <div class="form-grid">
+
+          <div class="form-group">
+            <label for="name">Full Name <span class="required">*</span></label>
+            <input type="text" id="name" name="name" placeholder="Jane Smith" autocomplete="name" />
+            <span class="field-error" id="nameError">Please enter your name.</span>
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email Address <span class="required">*</span></label>
+            <input type="email" id="email" name="email" placeholder="jane@example.com" autocomplete="email" />
+            <span class="field-error" id="emailError">Please enter a valid email.</span>
+          </div>
+
+          <div class="form-group">
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone" placeholder="(555) 000-0000" autocomplete="tel" />
+          </div>
+
+          <div class="form-group">
+            <label for="service">Service <span class="required">*</span></label>
+            <select id="service" name="service">
+              <option value="">Select a service…</option>
+              <option value="Remote IT Support">Remote IT Support</option>
+              <option value="Network Setup &amp; Configuration">Network Setup &amp; Configuration</option>
+              <option value="Security Audit &amp; Assessment">Security Audit &amp; Assessment</option>
+              <option value="Computer Repair &amp; Diagnostics">Computer Repair &amp; Diagnostics</option>
+              <option value="Business IT Consulting">Business IT Consulting</option>
+            </select>
+            <span class="field-error" id="serviceError">Please select a service.</span>
+          </div>
+
+          <div class="form-group">
+            <label for="preferred_date">Preferred Date <span class="required">*</span></label>
+            <input type="date" id="preferred_date" name="preferred_date" />
+            <span class="field-error" id="dateError">Please select a date.</span>
+          </div>
+
+          <div class="form-group">
+            <label for="preferred_time">Preferred Time <span class="required">*</span></label>
+            <select id="preferred_time" name="preferred_time">
+              <option value="">Select a time…</option>
+              <option value="9:00 AM">9:00 AM</option>
+              <option value="10:00 AM">10:00 AM</option>
+              <option value="11:00 AM">11:00 AM</option>
+              <option value="12:00 PM">12:00 PM</option>
+              <option value="1:00 PM">1:00 PM</option>
+              <option value="2:00 PM">2:00 PM</option>
+              <option value="3:00 PM">3:00 PM</option>
+              <option value="4:00 PM">4:00 PM</option>
+            </select>
+            <span class="field-error" id="timeError">Please select a time.</span>
+          </div>
+
+          <div class="form-group full">
+            <label for="notes">Additional Notes</label>
+            <textarea id="notes" name="notes" placeholder="Describe your issue or anything we should know before the session…"></textarea>
+          </div>
+
+        </div>
+
+        <p class="form-note mt-16"><span class="required">*</span> Required fields. Sessions available Mon–Fri, 9 AM – 5 PM ET.</p>
+
+        <div class="form-submit mt-24">
+          <button type="submit" class="btn btn--primary btn--large btn--full" id="submitBtn">
+            Request Appointment
+          </button>
+        </div>
+
+        <div class="form-message" id="formMessage"></div>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div>
+          <div class="footer__brand-name">TechServ<span>Pro</span></div>
+          <p class="footer__tagline">Professional IT support and consulting for individuals and small businesses.</p>
+        </div>
+        <div>
+          <div class="footer__col-title">Services</div>
+          <ul class="footer__links">
+            <li><a href="book.html">Remote IT Support</a></li>
+            <li><a href="book.html">Network Setup</a></li>
+            <li><a href="book.html">Security Audit</a></li>
+            <li><a href="book.html">Computer Repair</a></li>
+            <li><a href="book.html">IT Consulting</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Company</div>
+          <ul class="footer__links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html#services">Services</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Hours</div>
+          <ul class="footer__links">
+            <li>Mon–Fri</li>
+            <li>9:00 AM – 5:00 PM ET</li>
+            <li><a href="contact.html">Send a message</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span>© 2026 TechServ Pro. All rights reserved.</span>
+        <span>Built as a portfolio project.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
