@@ -6,6 +6,21 @@ Each project here is a real, working system built with the **WAT framework** (Wo
 
 ---
 
+## Featured Project — TechServ Pro
+
+**Live site:** [techserv-pro.onrender.com](https://techserv-pro.onrender.com)
+
+A full-stack appointment booking website for a fictional IT support and consulting business. Built end-to-end with Node.js, Express, and vanilla HTML/CSS/JS — featuring a contact form, appointment registration system, server-side validation, and a responsive Hyer-inspired design.
+
+| | |
+|---|---|
+| ![Home](techserv-pro/screenshot-home.png) | ![Book](techserv-pro/screenshot-book.png) |
+| ![Contact](techserv-pro/screenshot-contact.png) | ![Confirmation](techserv-pro/screenshot-confirmation.png) |
+
+**Stack:** Node.js · Express · JSON file store · Vanilla JS · Deployed on Render
+
+---
+
 ## What I Build
 
 ### For Content Creators
@@ -57,8 +72,8 @@ No hallucination loops. No fragile one-shot prompts. Each step is tested, docume
 
 Interested in a custom automation for your business?
 
-📧 [kshawng12@gmail.com]  
-🔗 [Your LinkedIn / Website]
+📧 [kshawng12@gmail.com]
+🔗 [TechServ Pro](https://techserv-pro.onrender.com)
 
 ---
 
