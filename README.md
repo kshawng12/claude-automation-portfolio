@@ -12,10 +12,11 @@ Each project here is a real, working system built with the **WAT framework** (Wo
 
 A full-stack appointment booking website for a fictional IT support and consulting business. Built end-to-end with Node.js, Express, and vanilla HTML/CSS/JS — featuring a contact form, appointment registration system, server-side validation, and a responsive Hyer-inspired design.
 
+![Home](https://raw.githubusercontent.com/kshawng12/claude-automation-portfolio/main/techserv-pro/screenshot-home.png)
+
 | | |
 |---|---|
-| ![Home](techserv-pro/screenshot-home.png) | ![Book](techserv-pro/screenshot-book.png) |
-| ![Contact](techserv-pro/screenshot-contact.png) | ![Confirmation](techserv-pro/screenshot-confirmation.png) |
+| ![Book](https://raw.githubusercontent.com/kshawng12/claude-automation-portfolio/main/techserv-pro/screenshot-book.png) | ![Contact](https://raw.githubusercontent.com/kshawng12/claude-automation-portfolio/main/techserv-pro/screenshot-contact.png) |
 
 **Stack:** Node.js · Express · JSON file store · Vanilla JS · Deployed on Render
 
